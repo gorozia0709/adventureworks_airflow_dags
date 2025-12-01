@@ -1,0 +1,17 @@
+steps:
+  - name: gcr.io/cloud-builders/gsutil
+    args:
+      - "-m"
+      - "rsync"
+      - "-r"
+      - "-d"
+      - "dags/"
+      - "gs://${_COMPOSER_BUCKET}/dags/"
+
+timeout: "600s"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _COMPOSER_BUCKET: "europe-west1-composer-etl-c733e92a-bucket"  
